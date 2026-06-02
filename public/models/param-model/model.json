@@ -1,0 +1,337 @@
+{
+  "format": "layers-model",
+  "generatedBy": "export_tfjs.py",
+  "convertedBy": "export_tfjs.py",
+  "modelTopology": {
+    "class_name": "Model",
+    "config": {
+      "name": "model1",
+      "layers": [
+        {
+          "class_name": "InputLayer",
+          "config": {
+            "batchInputShape": [
+              null,
+              128,
+              128,
+              3
+            ],
+            "dtype": "float32",
+            "sparse": false,
+            "name": "input_1"
+          },
+          "name": "input_1",
+          "inbound_nodes": []
+        },
+        {
+          "class_name": "Conv2D",
+          "config": {
+            "filters": 16,
+            "kernelSize": [
+              3,
+              3
+            ],
+            "strides": [
+              1,
+              1
+            ],
+            "padding": "same",
+            "dataFormat": "channels_last",
+            "activation": "relu",
+            "useBias": true,
+            "name": "conv2d_Conv2D1"
+          },
+          "name": "conv2d_Conv2D1",
+          "inbound_nodes": [
+            [
+              [
+                "input_1",
+                0,
+                0,
+                {}
+              ]
+            ]
+          ]
+        },
+        {
+          "class_name": "MaxPooling2D",
+          "config": {
+            "poolSize": [
+              2,
+              2
+            ],
+            "strides": [
+              2,
+              2
+            ],
+            "padding": "valid",
+            "dataFormat": "channels_last",
+            "name": "max_pooling2d_MaxPooling2D1"
+          },
+          "name": "max_pooling2d_MaxPooling2D1",
+          "inbound_nodes": [
+            [
+              [
+                "conv2d_Conv2D1",
+                0,
+                0,
+                {}
+              ]
+            ]
+          ]
+        },
+        {
+          "class_name": "Conv2D",
+          "config": {
+            "filters": 32,
+            "kernelSize": [
+              3,
+              3
+            ],
+            "strides": [
+              1,
+              1
+            ],
+            "padding": "same",
+            "dataFormat": "channels_last",
+            "activation": "relu",
+            "useBias": true,
+            "name": "conv2d_Conv2D2"
+          },
+          "name": "conv2d_Conv2D2",
+          "inbound_nodes": [
+            [
+              [
+                "max_pooling2d_MaxPooling2D1",
+                0,
+                0,
+                {}
+              ]
+            ]
+          ]
+        },
+        {
+          "class_name": "MaxPooling2D",
+          "config": {
+            "poolSize": [
+              2,
+              2
+            ],
+            "strides": [
+              2,
+              2
+            ],
+            "padding": "valid",
+            "dataFormat": "channels_last",
+            "name": "max_pooling2d_MaxPooling2D2"
+          },
+          "name": "max_pooling2d_MaxPooling2D2",
+          "inbound_nodes": [
+            [
+              [
+                "conv2d_Conv2D2",
+                0,
+                0,
+                {}
+              ]
+            ]
+          ]
+        },
+        {
+          "class_name": "Conv2D",
+          "config": {
+            "filters": 48,
+            "kernelSize": [
+              3,
+              3
+            ],
+            "strides": [
+              1,
+              1
+            ],
+            "padding": "same",
+            "dataFormat": "channels_last",
+            "activation": "relu",
+            "useBias": true,
+            "name": "conv2d_Conv2D3"
+          },
+          "name": "conv2d_Conv2D3",
+          "inbound_nodes": [
+            [
+              [
+                "max_pooling2d_MaxPooling2D2",
+                0,
+                0,
+                {}
+              ]
+            ]
+          ]
+        },
+        {
+          "class_name": "GlobalAveragePooling2D",
+          "config": {
+            "dataFormat": "channels_last",
+            "name": "global_average_pooling2d_GlobalAveragePooling2D1"
+          },
+          "name": "global_average_pooling2d_GlobalAveragePooling2D1",
+          "inbound_nodes": [
+            [
+              [
+                "conv2d_Conv2D3",
+                0,
+                0,
+                {}
+              ]
+            ]
+          ]
+        },
+        {
+          "class_name": "Dense",
+          "config": {
+            "units": 24,
+            "activation": "relu",
+            "useBias": true,
+            "name": "dense_Dense1"
+          },
+          "name": "dense_Dense1",
+          "inbound_nodes": [
+            [
+              [
+                "global_average_pooling2d_GlobalAveragePooling2D1",
+                0,
+                0,
+                {}
+              ]
+            ]
+          ]
+        },
+        {
+          "class_name": "Dense",
+          "config": {
+            "units": 3,
+            "activation": "tanh",
+            "useBias": true,
+            "name": "dense_Dense2"
+          },
+          "name": "dense_Dense2",
+          "inbound_nodes": [
+            [
+              [
+                "dense_Dense1",
+                0,
+                0,
+                {}
+              ]
+            ]
+          ]
+        }
+      ],
+      "inputLayers": [
+        [
+          "input_1",
+          0,
+          0
+        ]
+      ],
+      "outputLayers": [
+        [
+          "dense_Dense2",
+          0,
+          0
+        ]
+      ]
+    },
+    "keras_version": "2.8.0",
+    "backend": "tensor_flow"
+  },
+  "weightsManifest": [
+    {
+      "paths": [
+        "weights.bin"
+      ],
+      "weights": [
+        {
+          "name": "conv2d_Conv2D1/kernel",
+          "shape": [
+            3,
+            3,
+            3,
+            16
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "conv2d_Conv2D1/bias",
+          "shape": [
+            16
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "conv2d_Conv2D2/kernel",
+          "shape": [
+            3,
+            3,
+            16,
+            32
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "conv2d_Conv2D2/bias",
+          "shape": [
+            32
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "conv2d_Conv2D3/kernel",
+          "shape": [
+            3,
+            3,
+            32,
+            48
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "conv2d_Conv2D3/bias",
+          "shape": [
+            48
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "dense_Dense1/kernel",
+          "shape": [
+            48,
+            24
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "dense_Dense1/bias",
+          "shape": [
+            24
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "dense_Dense2/kernel",
+          "shape": [
+            24,
+            3
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "dense_Dense2/bias",
+          "shape": [
+            3
+          ],
+          "dtype": "float32"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "browser-image-enhancer",
+  "version": "1.0.0",
+  "description": "Real-time image enhancement in the browser via ML parameter prediction",
+  "type": "module",
+  "main": "./dist/image-enhancer.umd.cjs",
+  "module": "./dist/image-enhancer.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/image-enhancer.js",
+      "require": "./dist/image-enhancer.umd.cjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build --mode lib",
+    "build:demo": "vite build",
+    "train": "python training/train.py",
+    "export-model": "python training/export_weights.py && node scripts/generate_tfjs_model.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^4.22.0",
+    "heic2any": "^0.0.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vite-plugin-dts": "^4.3.0"
+  }
+}

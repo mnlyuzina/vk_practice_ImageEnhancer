@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Улучшение изображений в браузере</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Browser Image Enhancer</h1>
+        <p class="subtitle">
+          Обученная ML-модель подбирает яркость, контраст и насыщенность; обработка в Web Worker
+        </p>
+      </header>
+
+      <section class="controls">
+        <label class="file-label">
+          <input type="file" id="file" accept=".jpg,.jpeg,.png,.heic,.heif,.bmp,image/*" />
+          Выбрать изображение (JPG, PNG, HEIC, BMP, до 15 Мпк)
+        </label>
+        <div class="actions">
+          <button type="button" id="enhance" disabled>Улучшить</button>
+          <button type="button" id="cancel" disabled>Отменить</button>
+          <button type="button" id="download" disabled>Скачать результат</button>
+        </div>
+      </section>
+
+      <section class="status" id="status" aria-live="polite">
+        Загрузите изображение для начала работы.
+      </section>
+
+      <div class="progress-wrap" hidden>
+        <progress id="progress" max="100" value="0"></progress>
+        <span id="progress-label">0%</span>
+      </div>
+
+      <section class="preview">
+        <figure>
+          <figcaption>Исходное</figcaption>
+          <img id="original" alt="Исходное изображение" />
+        </figure>
+        <figure>
+          <figcaption>Результат</figcaption>
+          <img id="result" alt="Улучшенное изображение" />
+        </figure>
+      </section>
+
+      <section class="params" id="params" hidden>
+        <h2>Параметры коррекции (обученная ML-модель)</h2>
+        <dl>
+          <dt>Яркость</dt>
+          <dd id="p-brightness">—</dd>
+          <dt>Контраст</dt>
+          <dd id="p-contrast">—</dd>
+          <dt>Цветность</dt>
+          <dd id="p-saturation">—</dd>
+        </dl>
+      </section>
+    </main>
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>
