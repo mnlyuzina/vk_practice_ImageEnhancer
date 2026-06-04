@@ -28,6 +28,7 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
+    base: '/vk_practice_ImageEnhancer/',
     root: 'demo',
     publicDir: '../public',
     build: {
