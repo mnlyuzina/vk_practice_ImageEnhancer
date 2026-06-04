@@ -2,7 +2,7 @@ import * as tf from '@tensorflow/tfjs';
 import type { EnhancementParams } from '../types';
 
 const INPUT_SIZE = 128;
-const MODEL_URL = '/models/param-model/model.json';
+const MODEL_URL = './models/param-model/model.json';
 
 let model: tf.LayersModel | null = null;
 let modelReady: Promise<void> | null = null;
